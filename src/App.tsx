@@ -1,13 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import AppRoutes from './routes/AppRoutes';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <h1>Cookbook frontend</h1>
-    </div>
+    <AppRoutes />
   );
 }
-
-export default App;
