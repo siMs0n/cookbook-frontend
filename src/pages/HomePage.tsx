@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { FiSearch } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useHistory } from 'react-router-dom';
 import { Recipe } from '../types/recipe';
 
 const MotionInputGroup = motion.custom(InputGroup);
@@ -19,6 +20,11 @@ const MotionInputGroup = motion.custom(InputGroup);
 export default function HomePage() {
   const [recipes, setRecipes] = React.useState<Recipe[]>([]);
   const [loadingRecipes, setLoadingRecipes] = React.useState<boolean>(true);
+  const history = useHistory();
+
+  if (!localStorage.getItem('token')) {
+    history.push('/login');
+  }
 
   React.useEffect(() => {
     async function fetchRecipes() {
